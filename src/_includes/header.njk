@@ -1,4 +1,6 @@
 <header>
+    {% set t = translations[lang] or translations['hu'] %}
+    {% set nav = t.nav or {} %}
     <div class="header-content">
         <div class="site-tagline">
             <div class="tagline-text">
@@ -20,12 +22,12 @@
             <button class="hamburger" aria-controls="main-nav" aria-expanded="false" aria-label="Menü">☰</button>
 
             <nav id="main-nav">
-                <a href="/{{ lang }}/">🏠 {{ (translations[lang] or translations['hu']).nav.home }}</a>
-                <a href="/{{ lang }}/price/">💰 {{ (translations[lang] or translations['hu']).nav.price }}</a>
-                <a href="/{{ lang }}/prog/">📅 {{ (translations[lang] or translations['hu']).nav.prog }}</a>
-                <a href="/{{ lang }}/contact/">📞 {{ (translations[lang] or translations['hu']).nav.contact }}</a>
-                <a href="/{{ lang }}/rules/">📋 {{ (translations[lang] or translations['hu']).nav.rules }}</a>
-                <a href="/{{ lang }}/gdpr/">🔒 {{ (translations[lang] or translations['hu']).nav.gdpr }}</a>
+                <a href="/{{ lang }}/">🏠 {% if nav.home %}{{ nav.home }}{% elif lang == 'en' %}Home{% elif lang == 'de' %}Startseite{% else %}Kezdőlap{% endif %}</a>
+                <a href="/{{ lang }}/price/">💰 {% if nav.price %}{{ nav.price }}{% elif lang == 'en' %}Prices{% elif lang == 'de' %}Preise{% else %}Árak{% endif %}</a>
+                <a href="/{{ lang }}/prog/">📅 {% if nav.prog %}{{ nav.prog }}{% elif lang == 'en' %}Programs{% elif lang == 'de' %}Programm{% else %}Programok{% endif %}</a>
+                <a href="/{{ lang }}/contact/">📞 {% if nav.contact %}{{ nav.contact }}{% elif lang == 'en' %}Booking{% elif lang == 'de' %}Buchung{% else %}Foglalás{% endif %}</a>
+                <a href="/{{ lang }}/rules/">📋 {% if nav.rules %}{{ nav.rules }}{% elif lang == 'en' %}House Rules{% elif lang == 'de' %}Hausordnung{% else %}Házirend{% endif %}</a>
+                <a href="/{{ lang }}/gdpr/">🔒 {% if nav.gdpr %}{{ nav.gdpr }}{% elif lang == 'en' %}Privacy Policy{% elif lang == 'de' %}Datenschutz{% else %}Adatkezelés{% endif %}</a>
             </nav>
     </div>
 </header>
