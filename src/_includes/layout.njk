@@ -1,14 +1,21 @@
 {% set lang = lang or page.lang or 'hu' %}
+{% set siteDescription = site.description[lang] if site and site.description and site.description[lang] else (site.description.hu if site and site.description and site.description.hu else 'Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló, WiFi, zárt parkolás. 15 perc sétára a strandtól. Foglaljon most!') %}
+{% set metaDescription = description if description else siteDescription %}
+{% set is404 = page and page.url and '404' in page.url %}
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if title %}{{ title }} - {% endif %}{{ site.name or 'Pedetti Apartman' }} | Balatonfüred Szállás</title>
-    <meta name="description" content="{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló, WiFi, zárt parkolás. 15 perc sétára a strandtól. Foglaljon most!' }}">
+    <meta name="description" content="{{ metaDescription }}">
     <meta name="keywords" content="balatonfüred szállás, balatonfüred apartman, balaton apartman, balatonfüred accommodation, balaton szálláshely, balatonfüred 4 fő, modern apartman balaton">
     <meta name="author" content="Pedetti Apartman">
+    {% if is404 %}
+    <meta name="robots" content="noindex, follow">
+    {% else %}
     <meta name="robots" content="index, follow">
+    {% endif %}
         <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
         {# Hreflang alternates for i18n SEO #}
@@ -47,23 +54,27 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:locale" content="{{ lang or 'hu' }}_{{ lang == 'de' and 'DE' or (lang == 'en' and 'US' or 'HU') }}" />
+    <meta property="og:locale:alternate" content="hu_HU" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pedetti Apartman Balatonfüred" />
     <meta property="og:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }} | Balatonfüred Szállás" />
-    <meta property="og:description" content="{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló, WiFi, zárt parkolás.' }}" />
+    <meta property="og:description" content="{{ metaDescription }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
         {% set og_image = page.image or site.image %}
         {% if not og_image %}
             {% set og_image = site.url ~ '/assets/optimized/slide-1.webp' %}
         {% endif %}
         <meta property="og:image" content="{{ og_image }}" />
+        <meta property="og:image:alt" content="{{ site.name or 'Pedetti Apartman' }}" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }} | Balatonfüred" />
-    <meta name="twitter:description" content="{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére.' }}" />
+    <meta name="twitter:description" content="{{ metaDescription }}" />
     <meta name="twitter:image" content="{{ og_image }}" />
     
     <!-- Structured Data - JSON-LD -->
@@ -72,7 +83,7 @@
             "@context": "https://schema.org",
             "@type": "Apartment",
             "name": "{{ site.name or 'Pedetti Apartman' }}",
-            "description": "{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére.' }}",
+            "description": "{{ metaDescription }}",
             "image": "{{ og_image }}",
       "address": {
         "@type": "PostalAddress",

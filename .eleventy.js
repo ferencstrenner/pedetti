@@ -58,10 +58,10 @@ module.exports = function(eleventyConfig) {
       de: "Gemütliches Apartment am Plattensee mit ländlichem Charme und modernem Komfort",
       en: "Cozy apartment at Lake Balaton with rustic charm and modern comfort"
     },
-    url: "https://pedetti.hu",
+    url: "https://www.pedettiapartman.hu",
     author: "Major Péter",
     contact: {
-      email: "majorpet@gmail.com",
+      email: "pedettiapartman@gmail.com",
       phone: "+36705527552",
       address: "8230 Balatonfüred, Nádor u. 51"
     }
