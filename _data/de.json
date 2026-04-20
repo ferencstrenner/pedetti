@@ -1,0 +1,33 @@
+{
+  "lang": "de",
+  "language": "Deutsch",
+  "dir": "ltr",
+  "locale": "de-DE",
+  "site": {
+    "name": "Pedetti Apartman Balatonfüred",
+    "title": "Pedetti Apartman - Moderne Ferienwohnung in Balatonfüred für 4 Personen",
+    "description": "Moderne Ferienwohnung in Balatonfüred für 4 Personen. Klimaanlage, WiFi, voll ausgestattete Küche, privater Parkplatz. 15 Minuten zu Fuß zum Strand und zur Tagore Promenade. Familienfreundliche Unterkunft.",
+    "keywords": "balatonfüred unterkunft, balatonfüred ferienwohnung, balaton apartment, balaton ferienwohnung, balatonfüred 4 personen, moderne wohnung balaton, balaton urlaub, plattensee unterkunft"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "prices": "Preise",
+    "programs": "Programm",
+    "contact": "Kontakt",
+    "rules": "Hausordnung",
+    "privacy": "Datenschutz"
+  },
+  "common": {
+    "welcome": "Willkommen",
+    "readMore": "Mehr lesen",
+    "contact": "Kontakt",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "address": "Adresse",
+    "bookNow": "Jetzt buchen",
+    "availability": "Verfügbarkeit",
+    "priceFrom": "Preis ab",
+    "perNight": "Nacht",
+    "more": "Mehr"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "lang": "hu",
+  "language": "Magyar",
+  "dir": "ltr",
+  "locale": "hu-HU",
+  "site": {
+    "name": "Pedetti Apartman Balatonfüred",
+    "title": "Pedetti Apartman - Modern Szállás Balatonfüreden 4 Főre",
+    "description": "Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló, WiFi, teljesen felszerelt konyha, zárt parkolás. 15 perc sétára a strandtól és a Tagore sétánytól. Könnyen elérhető, family-friendly szállás.",
+    "keywords": "balatonfüred szállás, balatonfüred apartman, balaton apartman, balatonfüred accommodation, balaton szálláshely, balatonfüred 4 fő, modern apartman balaton, balatonfüred foglalás, balaton nyári szállás, family apartman balaton"
+  },
+  "navigation": {
+    "home": "Kezdőlap",
+    "prices": "Árak",
+    "programs": "Programok",
+    "contact": "Kapcsolat",
+    "rules": "Házirend",
+    "privacy": "Adatkezelés"
+  },
+  "common": {
+    "welcome": "Üdvözöljük",
+    "readMore": "Tovább",
+    "contact": "Kapcsolat",
+    "phone": "Telefon",
+    "email": "E-mail",
+    "address": "Cím",
+    "bookNow": "Foglaljon most",
+    "availability": "Szabad időpontok",
+    "priceFrom": "Ár-tól",
+    "perNight": "éjszaka",
+    "more": "Több"
+  }
+}

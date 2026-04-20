@@ -1,0 +1,33 @@
+{
+  "lang": "en",
+  "language": "English",
+  "dir": "ltr",
+  "locale": "en-US",
+  "site": {
+    "name": "Pedetti Apartman Balatonfüred",
+    "title": "Pedetti Apartment - Modern Accommodation in Balatonfüred for 4 Guests",
+    "description": "Modern apartment in Balatonfüred for 4 guests. Air conditioning, WiFi, fully equipped kitchen, private parking. 15-minute walk to the beach and Tagore Promenade. Family-friendly accommodation at Lake Balaton.",
+    "keywords": "balatonfüred accommodation, balatonfüred apartment, balaton apartment, lake balaton rental, balatonfüred 4 guests, modern apartment balaton, balaton holiday, hungary lake accommodation"
+  },
+  "navigation": {
+    "home": "Home",
+    "prices": "Prices",
+    "programs": "Programs",
+    "contact": "Contact",
+    "rules": "House Rules",
+    "privacy": "Privacy Policy"
+  },
+  "common": {
+    "welcome": "Welcome",
+    "readMore": "Read more",
+    "contact": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "bookNow": "Book now",
+    "availability": "Availability",
+    "priceFrom": "Price from",
+    "perNight": "night",
+    "more": "More"
+  }
+}

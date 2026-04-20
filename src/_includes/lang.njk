@@ -1,0 +1,20 @@
+<div class="lang-switch">
+    {% set currentPath = page.url | replace('/hu/', '/') | replace('/de/', '/') | replace('/en/', '/') %}
+    <div class="lang-dropdown">
+        <button class="lang-button" aria-expanded="false">
+            {% if lang == 'hu' %}
+                <img src="/assets/flags/hu.svg" alt="HU" class="flag-icon" loading="lazy" decoding="async"> HU
+            {% elif lang == 'de' %}
+                <img src="/assets/flags/de.svg" alt="DE" class="flag-icon" loading="lazy" decoding="async"> DE
+            {% else %}
+                <img src="/assets/flags/gb.svg" alt="EN" class="flag-icon" loading="lazy" decoding="async"> EN
+            {% endif %}
+            <span class="arrow">▼</span>
+        </button>
+        <div class="lang-menu">
+            {% if lang != 'hu' %}<a href="/hu{{ currentPath }}"><img src="/assets/flags/hu.svg" alt="HU" class="flag-icon" loading="lazy" decoding="async"><span class="lang-label">Magyar</span></a>{% endif %}
+            {% if lang != 'de' %}<a href="/de{{ currentPath }}"><img src="/assets/flags/de.svg" alt="DE" class="flag-icon" loading="lazy" decoding="async"><span class="lang-label">Deutsch</span></a>{% endif %}
+            {% if lang != 'en' %}<a href="/en{{ currentPath }}"><img src="/assets/flags/gb.svg" alt="EN" class="flag-icon" loading="lazy" decoding="async"><span class="lang-label">English</span></a>{% endif %}
+        </div>
+    </div>
+</div>

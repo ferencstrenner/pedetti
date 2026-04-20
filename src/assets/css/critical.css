@@ -1,0 +1,13 @@
+/* Critical CSS: minimal styles for first render */
+:root{--primary-color:#8B4513;--text-dark:#2F1B14;--background:#FDF5E6;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Crimson Text, serif;color:var(--text-dark);background:var(--background);font-size:18px;line-height:1.4}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{position:relative;padding:18px 0}
+.site-tagline{display:flex;align-items:center;justify-content:center;gap:1rem}
+.tagline-title{font-family:Playfair Display, serif;font-size:2rem;color:var(--primary-color)}
+nav{display:flex;justify-content:center;gap:0.6rem;flex-wrap:wrap}
+nav a{color:var(--text-dark);text-decoration:none;padding:0.5rem 0.8rem;border-radius:4px}
+.hamburger{display:none}
+@media(max-width:768px){.hamburger{display:inline-block}}

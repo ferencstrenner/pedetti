@@ -1,0 +1,38 @@
+<footer>
+  <div class="footer-content">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h3>{{ (translations[lang] or translations['hu']).footer.contactTitle }}</h3>
+        <p>
+          <strong>Pedetti Apartman</strong><br>
+          8230 Balatonfüred<br>
+          Nádor utca 51.<br>
+          NTAK: MA22042826
+        </p>
+        <p>
+          <a href="tel:+36705527552">+36-70-552-7552</a><br>
+          <a href="mailto:pedettiapartman@gmail.com">pedettiapartman@gmail.com</a>
+        </p>
+      </div>
+      
+      <div class="footer-col footer-logo">
+        <img src="/assets/logo.png" alt="Pedetti Apartman Logo" class="footer-logo-img" loading="lazy" decoding="async">
+      </div>
+      
+      <div class="footer-col">
+        <h3>{{ (translations[lang] or translations['hu']).footer.quickLinksTitle }}</h3>
+        <ul>
+          <li><a href="/{{ lang or 'hu' }}/price/">{% if lang == 'de' %}Preise{% elif lang == 'en' %}Prices{% else %}Árak{% endif %}</a></li>
+          <li><a href="/{{ lang or 'hu' }}/prog/">{% if lang == 'de' %}Programm{% elif lang == 'en' %}Programs{% else %}Programok{% endif %}</a></li>
+          <li><a href="/{{ lang or 'hu' }}/rules/">{% if lang == 'de' %}Hausordnung{% elif lang == 'en' %}House Rules{% else %}Házirend{% endif %}</a></li>
+          <li><a href="/{{ lang or 'hu' }}/gdpr/">{% if lang == 'de' %}Datenschutz{% elif lang == 'en' %}Privacy{% else %}Adatkezelés{% endif %}</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {% currentYear %} Pedetti Apartman. {{ (translations[lang] or translations['hu']).footer.allRights }}</p>
+      <p class="footer-credit">{{ (translations[lang] or translations['hu']).footer.createdBy }} <a href="https://connectalp.net" target="_blank" rel="noopener">Strenner Ferenc Gábor</a> - connectalp.net</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+{
+  "name": "pedetti-apartman",
+  "version": "1.0.0",
+  "description": "Pedetti Apartman website - Balatonfüredi szállás vidéki bájjal",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --watch",
+    "start": "eleventy --serve",
+    "optimize-images": "node scripts/optimize-images.js",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "apartman",
+    "balaton",
+    "balatonfured",
+    "szallas",
+    "videki",
+    "eleventy",
+    "static-site"
+  ],
+  "author": "Major Péter <majorpet@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.4.4",
+    "markdown-it": "^14.0.0",
+    "markdown-it-attrs": "^4.1.6",
+    "sharp": "^0.34.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/majorpeter/pedetti-apartman.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

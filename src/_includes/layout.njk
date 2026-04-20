@@ -1,0 +1,167 @@
+{% set lang = lang or page.lang or 'hu' %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}{{ site.name or 'Pedetti Apartman' }} | Balatonfüred Szállás</title>
+    <meta name="description" content="{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló, WiFi, zárt parkolás. 15 perc sétára a strandtól. Foglaljon most!' }}">
+    <meta name="keywords" content="balatonfüred szállás, balatonfüred apartman, balaton apartman, balatonfüred accommodation, balaton szálláshely, balatonfüred 4 fő, modern apartman balaton">
+    <meta name="author" content="Pedetti Apartman">
+    <meta name="robots" content="index, follow">
+        <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+        {# Hreflang alternates for i18n SEO #}
+        {% set base = site.url %}
+        {% set u = page.url %}
+        {% set prefix = u | slice(0,4) %}
+        {% if prefix == '/hu/' %}
+            {% set altHu = base + u %}
+            {% set altEn = base + (u | replace('/hu/','/en/')) %}
+            {% set altDe = base + (u | replace('/hu/','/de/')) %}
+        {% elif prefix == '/en/' %}
+            {% set altHu = base + (u | replace('/en/','/hu/')) %}
+            {% set altEn = base + u %}
+            {% set altDe = base + (u | replace('/en/','/de/')) %}
+        {% elif prefix == '/de/' %}
+            {% set altHu = base + (u | replace('/de/','/hu/')) %}
+            {% set altEn = base + (u | replace('/de/','/en/')) %}
+            {% set altDe = base + u %}
+        {% else %}
+            {% set altHu = base + '/hu/' %}
+            {% set altEn = base + '/en/' %}
+            {% set altDe = base + '/de/' %}
+        {% endif %}
+
+        <link rel="alternate" hreflang="hu" href="{{ altHu }}">
+        <link rel="alternate" hreflang="en" href="{{ altEn }}">
+        <link rel="alternate" hreflang="de" href="{{ altDe }}">
+        <link rel="alternate" hreflang="x-default" href="{{ base }}/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="{{ lang or 'hu' }}_{{ lang == 'de' and 'DE' or (lang == 'en' and 'US' or 'HU') }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pedetti Apartman Balatonfüred" />
+    <meta property="og:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }} | Balatonfüred Szállás" />
+    <meta property="og:description" content="{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló, WiFi, zárt parkolás.' }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+        {% set og_image = page.image or site.image %}
+        {% if not og_image %}
+            {% set og_image = site.url ~ '/assets/optimized/slide-1.webp' %}
+        {% endif %}
+        <meta property="og:image" content="{{ og_image }}" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }} | Balatonfüred" />
+    <meta name="twitter:description" content="{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére.' }}" />
+    <meta name="twitter:image" content="{{ og_image }}" />
+    
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Apartment",
+            "name": "{{ site.name or 'Pedetti Apartman' }}",
+            "description": "{{ description or site.description or 'Modern apartman Balatonfüreden 4 fő részére.' }}",
+            "image": "{{ og_image }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Balatonfüred",
+        "addressRegion": "Veszprém",
+        "addressCountry": "HU"
+      },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "46.9626002",
+                "longitude": "17.8900238"
+            },
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Légkondicionálás", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Parkolás", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Konyha", "value": true}
+      ],
+      "numberOfRooms": "2",
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 4
+      },
+      "petsAllowed": false,
+            "url": "https://www.pedettiapartman.hu",
+            "telephone": "+36-70-552-7552",
+      "priceRange": "$$"
+    }
+    </script>
+    
+    <!-- Google Fonts - Vidéki ház stílus -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="/assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="preload" href="/assets/css/critical.css" as="style">
+    <link rel="stylesheet" href="/assets/css/critical.css">
+</head>
+<body>
+    <div class="container">
+        {% include "header.njk" %}
+
+        {# Hero / banner - slideshow with multiple images #}
+        <div class="hero">
+            <div class="hero__slideshow">
+                {# Load slides from _data/slides.json; choose 'prog' set for program pages #}
+                {% set slidesData = slides or {} %}
+                {% set slidesList = slidesData.default if slidesData.default else [] %}
+                {% if page.url and 'prog' in page.url and slidesData.prog %}
+                    {% set slidesList = slidesData.prog %}
+                {% endif %}
+
+                {% for img in slidesList %}
+                    <img class="hero__image hero__slide {% if loop.index0 == 0 %}active{% endif %}" src="{{ img }}" alt="{{ site.name }} - slide {{ loop.index }}" loading="{% if loop.index0 == 0 %}eager{% else %}lazy{% endif %}" decoding="async" sizes="(max-width: 768px) 100vw, 1200px" onerror="this.src='{{ img | replace('/assets/optimized/','/assets/') | replace('.webp','.jpg') }}'" />
+                {% endfor %}
+            </div>
+            <div class="hero__dots">
+                {% for img in slidesList %}
+                    <span class="dot {% if loop.index0 == 0 %}active{% endif %}" data-slide="{{ loop.index0 }}"></span>
+                {% endfor %}
+            </div>
+            <button class="hero__prev" aria-label="Előző kép">&#10094;</button>
+            <button class="hero__next" aria-label="Következő kép">&#10095;</button>
+        </div>
+
+        <!-- Lightbox HTML -->
+        <div class="lightbox" id="lightbox">
+            <span class="lightbox__close">&times;</span>
+            <span class="lightbox__nav lightbox__prev">&#10094;</span>
+            <div class="lightbox__content">
+                <img class="lightbox__image" id="lightboxImage" alt="Nagyított kép">
+                <div class="lightbox__caption" id="lightboxCaption"></div>
+            </div>
+            <span class="lightbox__nav lightbox__next">&#10095;</span>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+        <script src="/assets/js/site.js" defer></script>
+        </div>
+
+        <main>
+            <div class="content">
+                {{ content | safe }}
+            </div>
+        </main>
+        
+        {% include "footer.njk" %}
+    </div>
+</body>
+</html>

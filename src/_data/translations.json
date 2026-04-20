@@ -1,0 +1,53 @@
+{
+  "hu": {
+    "tagline_sub": "Fiatalos, modern szálláshely 4 főre",
+    "nav": {
+      "home": "Kezdőlap",
+      "price": "Árak",
+      "prog": "Programok",
+      "contact": "Foglalás",
+      "rules": "Házirend",
+      "gdpr": "Adatkezelés"
+    },
+    "footer": {
+      "contactTitle": "Kapcsolat",
+      "quickLinksTitle": "Gyors linkek",
+      "createdBy": "Készítette",
+      "allRights": "Minden jog fenntartva."
+    }
+  },
+  "en": {
+    "tagline_sub": "Youthful, modern accommodation for 4 guests",
+    "nav": {
+      "home": "Home",
+      "price": "Prices",
+      "prog": "Programs",
+      "contact": "Booking",
+      "rules": "House Rules",
+      "gdpr": "Privacy Policy"
+    },
+    "footer": {
+      "contactTitle": "Contact",
+      "quickLinksTitle": "Quick Links",
+      "createdBy": "Created by",
+      "allRights": "All rights reserved."
+    }
+  },
+  "de": {
+    "tagline_sub": "Junges, modernes Apartment für 4 Personen",
+    "nav": {
+      "home": "Startseite",
+      "price": "Preise",
+      "prog": "Programm",
+      "contact": "Buchung",
+      "rules": "Hausordnung",
+      "gdpr": "Datenschutz"
+    },
+    "footer": {
+      "contactTitle": "Kontakt",
+      "quickLinksTitle": "Schnelllinks",
+      "createdBy": "Erstellt von",
+      "allRights": "Alle Rechte vorbehalten."
+    }
+  }
+}

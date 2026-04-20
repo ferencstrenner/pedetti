@@ -1,0 +1,31 @@
+<header>
+    <div class="header-content">
+        <div class="site-tagline">
+            <div class="tagline-text">
+                <div class="tagline-title">Pedetti Apartman Balatonfüred</div>
+                <div class="tagline-sub">{{ (translations[lang] or translations['hu']).tagline_sub }}</div>
+            </div>
+            <img src="/assets/logo.png" alt="Pedetti Apartman logo" class="header-logo" decoding="async">
+        </div>
+
+        <h1 style="display:none">🏡 {{ site.name or 'Pedetti Apartman' }} 🌿</h1>
+
+        <div class="header-top-bar">
+            {% include "social.njk" %}
+            
+            {% include "lang.njk" %}
+        </div>
+
+            <!-- Mobile hamburger button -->
+            <button class="hamburger" aria-controls="main-nav" aria-expanded="false" aria-label="Menü">☰</button>
+
+            <nav id="main-nav">
+                <a href="/{{ lang }}/">🏠 {{ (translations[lang] or translations['hu']).nav.home }}</a>
+                <a href="/{{ lang }}/price/">💰 {{ (translations[lang] or translations['hu']).nav.price }}</a>
+                <a href="/{{ lang }}/prog/">📅 {{ (translations[lang] or translations['hu']).nav.prog }}</a>
+                <a href="/{{ lang }}/contact/">📞 {{ (translations[lang] or translations['hu']).nav.contact }}</a>
+                <a href="/{{ lang }}/rules/">📋 {{ (translations[lang] or translations['hu']).nav.rules }}</a>
+                <a href="/{{ lang }}/gdpr/">🔒 {{ (translations[lang] or translations['hu']).nav.gdpr }}</a>
+            </nav>
+    </div>
+</header>
