@@ -128,7 +128,22 @@
                 {% endif %}
 
                 {% for img in slidesList %}
-                    <img class="hero__image hero__slide {% if loop.index0 == 0 %}active{% endif %}" src="{{ img }}" alt="{{ site.name }} - slide {{ loop.index }}" loading="{% if loop.index0 == 0 %}eager{% else %}lazy{% endif %}" decoding="async" sizes="(max-width: 768px) 100vw, 1200px" onerror="this.src='{{ img | replace('/assets/optimized/','/assets/') | replace('.webp','.jpg') }}'" />
+                    <img
+                        class="hero__image hero__slide {% if loop.index0 == 0 %}active{% endif %}"
+                        {% if loop.index0 == 0 %}
+                        src="{{ img }}"
+                        fetchpriority="high"
+                        {% else %}
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                        data-src="{{ img }}"
+                        {% endif %}
+                        data-fallback="{{ img | replace('/assets/optimized/','/assets/') | replace('.webp','.jpg') }}"
+                        alt="{{ site.name }} - slide {{ loop.index }}"
+                        loading="{% if loop.index0 == 0 %}eager{% else %}lazy{% endif %}"
+                        decoding="async"
+                        sizes="(max-width: 768px) 100vw, 1200px"
+                        onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;}"
+                    />
                 {% endfor %}
             </div>
             <div class="hero__dots">

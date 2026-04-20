@@ -3,10 +3,39 @@
     var dots = Array.from(document.querySelectorAll('.hero__dots .dot'));
     var current = 0, interval;
 
+    function normalizeIndex(n){
+        if(!slides.length) return 0;
+        return (n + slides.length) % slides.length;
+    }
+
+    function ensureSlideLoaded(index){
+        var i = normalizeIndex(index);
+        var slide = slides[i];
+        if(!slide) return;
+        var pendingSrc = slide.getAttribute('data-src');
+        if(pendingSrc){
+            slide.setAttribute('src', pendingSrc);
+            slide.removeAttribute('data-src');
+        }
+    }
+
+    function preloadSlide(index){
+        var i = normalizeIndex(index);
+        var slide = slides[i];
+        if(!slide) return;
+        var pendingSrc = slide.getAttribute('data-src');
+        if(!pendingSrc) return;
+        var img = new Image();
+        img.src = pendingSrc;
+    }
+
     function go(n){
+        if(!slides.length) return;
         slides.forEach(function(s){ s.classList.remove('active'); });
         dots.forEach(function(d){ d.classList.remove('active'); });
-        current = (n + slides.length) % slides.length;
+        current = normalizeIndex(n);
+        ensureSlideLoaded(current);
+        preloadSlide(current + 1);
         slides[current] && slides[current].classList.add('active');
         dots[current] && dots[current].classList.add('active');
     }
@@ -35,7 +64,7 @@
     var lbCaption = document.getElementById('lightboxCaption');
 
     slides.forEach(function(img, i){
-        img.addEventListener('click', function(e){ e.preventDefault(); stop(); if(!lightbox || !lbImg) return; document.body.classList.add('lightbox-open'); lightbox.classList.add('active'); lbImg.src = img.src; if(lbCaption) lbCaption.textContent = img.dataset.caption || img.alt || ''; current = i; });
+        img.addEventListener('click', function(e){ e.preventDefault(); stop(); if(!lightbox || !lbImg) return; ensureSlideLoaded(i); document.body.classList.add('lightbox-open'); lightbox.classList.add('active'); lbImg.src = slides[i].src; if(lbCaption) lbCaption.textContent = img.dataset.caption || img.alt || ''; current = i; preloadSlide(i + 1); });
         try{ img.setAttribute('draggable','false'); }catch(e){}
         img.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
     });
@@ -45,8 +74,8 @@
     var lbNext = document.querySelector('.lightbox__next');
     if(lbClose) lbClose.addEventListener('click', function(){ lightbox.classList.remove('active'); document.body.classList.remove('lightbox-open'); start(); });
     if(lightbox) lightbox.addEventListener('click', function(e){ if(e.target === lightbox){ lightbox.classList.remove('active'); document.body.classList.remove('lightbox-open'); start(); } });
-    if(lbPrev) lbPrev.addEventListener('click', function(){ var i = (current - 1 + slides.length) % slides.length; document.getElementById('lightboxImage').src = slides[i].src; current = i; });
-    if(lbNext) lbNext.addEventListener('click', function(){ var i = (current + 1) % slides.length; document.getElementById('lightboxImage').src = slides[i].src; current = i; });
+    if(lbPrev) lbPrev.addEventListener('click', function(){ var i = normalizeIndex(current - 1); ensureSlideLoaded(i); document.getElementById('lightboxImage').src = slides[i].src; current = i; preloadSlide(i - 1); });
+    if(lbNext) lbNext.addEventListener('click', function(){ var i = normalizeIndex(current + 1); ensureSlideLoaded(i); document.getElementById('lightboxImage').src = slides[i].src; current = i; preloadSlide(i + 1); });
 
     document.addEventListener('keydown', function(e){ if(lightbox && lightbox.classList.contains('active')){ if(e.key === 'Escape'){ lightbox.classList.remove('active'); document.body.classList.remove('lightbox-open'); start(); } else if(e.key === 'ArrowLeft'){ lbPrev && lbPrev.click(); } else if(e.key === 'ArrowRight'){ lbNext && lbNext.click(); } } });
 
@@ -188,5 +217,9 @@
         });
     })();
 
-    start();
+    ensureSlideLoaded(0);
+    preloadSlide(1);
+    if(slides.length > 1){
+        start();
+    }
 })();
