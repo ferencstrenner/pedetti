@@ -135,7 +135,7 @@ NTAK: MA22042826
 
 ### 📧 Nachricht senden
 
-<form class="contact-emailjs-form" data-lang="de" data-emailjs-service-id="YOUR_EMAILJS_SERVICE_ID" data-emailjs-template-id="YOUR_EMAILJS_TEMPLATE_ID" data-emailjs-public-key="YOUR_EMAILJS_PUBLIC_KEY" autocomplete="off">
+<form class="contact-emailjs-form" data-lang="de" data-emailjs-service-id="service_thwid4e" data-emailjs-template-id="template_9xph71a" data-emailjs-public-key="qWK6UjtkpwVzHVHNV" autocomplete="off">
   <input type="hidden" name="contact_subject" value="Neue Nachricht - Pedetti Apartman">
   <div class="form-group">
     <label for="name">Name *</label>
