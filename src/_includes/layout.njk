@@ -166,7 +166,9 @@
             <span class="lightbox__nav lightbox__next">&#10095;</span>
         </div>
 
+        {% if page.url and '/contact/' in page.url %}
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+        {% endif %}
         <script src="/assets/js/site.js" defer></script>
         </div>
 

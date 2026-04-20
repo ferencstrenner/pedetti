@@ -5,7 +5,7 @@
                 <div class="tagline-title">Pedetti Apartman Balatonfüred</div>
                 <div class="tagline-sub">{{ (translations[lang] or translations['hu']).tagline_sub }}</div>
             </div>
-            <img src="/assets/logo.png" alt="Pedetti Apartman logo" class="header-logo" decoding="async">
+            <img src="/assets/logo.png" alt="Pedetti Apartman logo" class="header-logo" decoding="async" fetchpriority="high">
         </div>
 
         <h1 style="display:none">🏡 {{ site.name or 'Pedetti Apartman' }} 🌿</h1>
