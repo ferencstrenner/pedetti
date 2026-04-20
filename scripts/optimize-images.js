@@ -5,23 +5,50 @@ const sharp = require('sharp');
 const srcDir = path.join(__dirname, '..', 'src', 'assets');
 const outDir = path.join(srcDir, 'optimized');
 
-const INPUT_SUBDIRS = ['flat', 'prog'];
+const INPUT_SUBDIRS = ['', 'flat', 'prog'];
+const SUPPORTED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png']);
+
+const OPTIMIZED_WIDTH = 1366;
+const WEBP_QUALITY = 72;
+const WEBP_EFFORT = 6;
 
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 
 async function processOne(inputPath, outputPath) {
   const ext = path.extname(inputPath).toLowerCase();
-  if (!['.jpg', '.jpeg', '.png'].includes(ext)) return;
+  if (!SUPPORTED_EXTENSIONS.has(ext)) return;
 
   try {
     await sharp(inputPath)
-      .resize({ width: 1600, withoutEnlargement: true })
-      .webp({ quality: 80 })
+      .rotate()
+      .resize({ width: OPTIMIZED_WIDTH, withoutEnlargement: true, fit: 'inside' })
+      .webp({ quality: WEBP_QUALITY, effort: WEBP_EFFORT })
       .toFile(outputPath);
     console.log('Wrote', outputPath);
   } catch (err) {
     console.error('Failed', inputPath, err);
   }
+}
+
+function collectImagesRecursive(dir) {
+  const result = [];
+  if (!fs.existsSync(dir)) return result;
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      result.push(...collectImagesRecursive(fullPath));
+      continue;
+    }
+
+    const ext = path.extname(entry.name).toLowerCase();
+    if (SUPPORTED_EXTENSIONS.has(ext)) {
+      result.push(fullPath);
+    }
+  }
+
+  return result;
 }
 
 async function processDir(sub) {
@@ -34,13 +61,12 @@ async function processDir(sub) {
   const targetDir = path.join(outDir, sub);
   if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir, { recursive: true });
 
-  const files = fs.readdirSync(dir);
-  for (const file of files) {
-    const input = path.join(dir, file);
-    const ext = path.extname(file).toLowerCase();
-    if (!['.jpg', '.jpeg', '.png'].includes(ext)) continue;
-    const base = path.basename(file, ext);
-    const outWebp = path.join(targetDir, base + '.webp');
+  const files = collectImagesRecursive(dir);
+  for (const input of files) {
+    const rel = path.relative(dir, input);
+    const parsed = path.parse(rel);
+    const outWebp = path.join(targetDir, parsed.dir, parsed.name + '.webp');
+    fs.mkdirSync(path.dirname(outWebp), { recursive: true });
     await processOne(input, outWebp);
   }
 }
