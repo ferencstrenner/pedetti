@@ -18,8 +18,6 @@ description: Pedetti Apartman Preise in Balatonfüred. Transparente Preisgestalt
  2026.06.21-08.31 - 48.000 Ft / Nacht
 
 
-Aktuelle Preise und Buchungsbedingungen sind oben aufgeführt.
-
 ## Wichtige Informationen zur Buchung
 
 - Der Preis gilt für das gesamte Apartment, maximal 4 Personen.

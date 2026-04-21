@@ -18,9 +18,6 @@ description: Pedetti Apartman árak Balatonfüreden. Átlátható árazás, ruga
  2026.06.21-08.31 között - 48000 Ft/ éj
 
 
-
-Az aktuális árak és foglalási feltételek hamarosan elérhetők lesznek.
-
 ## Tudnivalók a foglalásról
 
 - Az ár a teljes apartmanra vonatkozik, melyben maximum 4 fő fér el.

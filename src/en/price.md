@@ -18,8 +18,6 @@ description: Pedetti Apartment prices in Balatonfüred. Transparent pricing, fle
  2026.06.21-08.31 - 48,000 Ft / night
 
 
-Current prices and booking conditions are shown above.
-
 ## Booking information
 
 - The price applies to the entire apartment, with a maximum occupancy of 4 people.

@@ -15,14 +15,13 @@ description: Modern apartman Balatonfüreden 4 fő részére. Légkondicionáló
 
 ### Miért válassza a Pedetti Apartmant?
 
-- A Pedetti Apartman ideális választás néhány napos tartózkodáshoz, maximum 4 fő részére.
-- Fiatalos, modern és hangulatos, újszerű lakás a társasház földszintjén.
-- Kiváló szállás családoknak és baráti társaságoknak.
-- TV-előfizetés, Wi‑Fi és légkondicionálás biztosított.
-- Teljesen felszerelt, gépesített konyha.
-- Zárt udvari parkolási lehetőség 1 gépkocsi számára.
-- Könnyen megközelíthető: vasútállomás és bevásárlási lehetőségek a közelben.
-- A Balatonfüredi sétány és a strandok kényelmes, mintegy 15 perces sétával elérhetők.
+- Fiatalos, modern, kellemes hangulatú újszerű lakás, egy kislétszámű társasház földszintjén.
+- Nagyszerű szálláshely családoknak, barátoknak - maximum 4 fő részére
+- TV előfizetés, wifi és klíma adott.
+- Konyhája mindennel felszerelt, gépesített
+- A zárt udvaron van lehetőség parkolásra.
+- Könnyen megközelíthető, a közelben vasútállomás, bevásárlási lehetőségek találhatók.
+- Balatonfüredi sétány, strandok 15 perces, kényelmes sétával elérhetők. 
 
 </div>
 <div class="balaton-map-home">
