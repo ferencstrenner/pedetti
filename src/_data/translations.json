@@ -12,6 +12,7 @@
     "footer": {
       "contactTitle": "Kapcsolat",
       "quickLinksTitle": "Gyors linkek",
+      "owner": "Tulajdonos: Major Péter",
       "createdBy": "Készítette",
       "allRights": "Minden jog fenntartva."
     }
@@ -29,6 +30,7 @@
     "footer": {
       "contactTitle": "Contact",
       "quickLinksTitle": "Quick Links",
+      "owner": "Owner: Major Péter",
       "createdBy": "Created by",
       "allRights": "All rights reserved."
     }
@@ -46,6 +48,7 @@
     "footer": {
       "contactTitle": "Kontakt",
       "quickLinksTitle": "Schnelllinks",
+      "owner": "Eigentümer: Major Péter",
       "createdBy": "Erstellt von",
       "allRights": "Alle Rechte vorbehalten."
     }
