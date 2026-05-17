@@ -114,6 +114,9 @@
     }
     </script>
     
+    <!-- Critical CSS inline (render-blocking elkerülés) -->
+    <style>:root{--primary-color:#8B4513;--text-dark:#2F1B14;--background:#FDF5E6}*{box-sizing:border-box;margin:0;padding:0}body,html{height:100%}body{font-family:Crimson Text,serif;color:var(--text-dark);background:var(--background);font-size:18px;line-height:1.4}.container{max-width:1200px;margin:0 auto;padding:0 20px}header{position:relative;padding:18px 0}.site-tagline{display:flex;align-items:center;justify-content:center;gap:1rem}.tagline-title{font-family:Playfair Display,serif;font-size:2rem;color:var(--primary-color)}nav{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}nav a{color:var(--text-dark);text-decoration:none;padding:.5rem .8rem;border-radius:4px}.hamburger{display:none}@media(max-width:768px){.hamburger{display:inline-block}}.hero__image{opacity:0;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}.hero__slide.active{opacity:1;z-index:1}</style>
+
     <!-- Google Fonts - Vidéki ház stílus -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,8 +124,16 @@
 
     <link rel="preload" href="/assets/css/styles.css" as="style">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="preload" href="/assets/css/critical.css" as="style">
-    <link rel="stylesheet" href="/assets/css/critical.css">
+
+    {# LCP preload: első slideshow kép #}
+    {% set _slidesData = slides or {} %}
+    {% set _slidesList = _slidesData.default if _slidesData.default else [] %}
+    {% if page.url and 'prog' in page.url and _slidesData.prog %}
+        {% set _slidesList = _slidesData.prog %}
+    {% endif %}
+    {% if _slidesList.length > 0 %}
+    <link rel="preload" href="{{ _slidesList[0] }}" as="image" fetchpriority="high">
+    {% endif %}
 </head>
 <body>
     <div class="container">
@@ -152,6 +163,8 @@
                         alt="{{ site.name }} - slide {{ loop.index }}"
                         loading="{% if loop.index0 == 0 %}eager{% else %}lazy{% endif %}"
                         decoding="async"
+                        width="1366"
+                        height="768"
                         sizes="(max-width: 768px) 100vw, 1200px"
                         onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;}"
                     />
